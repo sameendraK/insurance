@@ -2,22 +2,30 @@ import styled from 'styled-components';
 
 export const ChargesSummaryWrapper = styled.div`
 
+.wrapper{
+    display:flex;
+    }
+// .charges-form-wrapper-container{
+//     margin-right:20px;
+// }
 .charges-form-wrapper-container{
-    margin-right:20px;
-}
-.charges-form-wrapper-container{
-    height: 500px;
-    width: 250px;
-    position:relative;
-    left:445px;
-    bottom:150px;
-    border: solid 1px blue;
-    text-align: center;
-    // box-shadow: -3px 3px 18px 2px #3b93ff;
-    transition:.8s;
-    border-radius:10px;
-    // padding:5px;
-    background-color:#fff;
+    // height: 500px;
+    // width: 250px;
+    // position:relative;
+    // left:445px;
+    // bottom:150px;
+    // border: solid 1px blue;
+    // text-align: center;
+    // // box-shadow: -3px 3px 18px 2px #3b93ff;
+    // transition:.8s;
+    // border-radius:10px;
+    // // padding:5px;
+    // background-color:#fff;
+    }
+    .plan-1{
+        background:silver;
+        // font-size:50px;
+        color:white;
     }
     .charges-form-wrapper-container:hover{
         transform:scale(1.1);
@@ -49,18 +57,25 @@ export const ChargesSummaryWrapper = styled.div`
 }
 
 .recommended-card{
-    height: 570px;
-    width: 300px;
-    position:relative;
-    left:445px;
-    bottom:180px;
-    border: solid 1px blue;
-    text-align: center;
+    // height: 570px;
+    // width: 300px;
+    // position:relative;
+    // left:445px;
+    // bottom:180px;
+    // border: solid 1px blue;
+    // text-align: center;
     background: linear-gradient(360deg, #ffe76f, transparent);
-    transition:.8s;
-    border-radius:10px;
+    // transition:.8s;
+    // border-radius:10px;
     // background:#ffe76f;
 }
+
+.plans-container-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1.25fr 1fr;
+    gap: 2em;}
+
+.
 // .view-more-silver-button>button{
 //     background-color: #dfdfdf;
 //     border: #dfdfdf;

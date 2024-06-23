@@ -3,412 +3,203 @@ import { ChargesSummaryWrapper } from './ChargesSummary.styled.ts'
 interface ChargesFormProps { }
 
 const ChargesSummary: FC<ChargesFormProps> = () => {
-    const [goldBtnViewMore, setGoldBtnViewMore] = useState(false);
+    const [goldPlanTable, setGoldPlanTable] = useState(false);
     const toggleGoldPlans = () => {
-        setGoldBtnViewMore(!goldBtnViewMore);
+        setGoldPlanTable(!goldPlanTable);
     };
-    const [silverBtnViewMore, setSilverBtnViewMore] = useState(false);
+    const [silverPlanTable, setSilverPlanTable] = useState(false);
     const toggleSilverPlans = () => {
-        setSilverBtnViewMore(!silverBtnViewMore);
+        setSilverPlanTable(!silverPlanTable);
     };
-    const [platinumBtnViewMore, setPlatinumBtnViewMore] = useState(false);
-    const toggleplatinumPlans = () => {
-        setPlatinumBtnViewMore(!platinumBtnViewMore);
+    const [platinumPlanTable, setPlatinumPlanTable] = useState(false);
+    const togglePlatinumPlans = () => {
+        setPlatinumPlanTable(!platinumPlanTable);
     };
-    return (
-        <ChargesSummaryWrapper>
-            <div className="wrapper">
-                <div className="charges-form-wrapper-container card-1">
-                    <div className="charges-form-container">
-                        <section>
-                            <div className="plan-container">
-                                <div className="plan-heading-container">
-                                    <h3 className="card-1-heading">Silver</h3>
-                                </div>
-                                <div className="plan-details-container">
-                                </div>
-                            </div>
-                            <div className="pricing-and-details-container pricing-1">
-                                <div className="price-container">
-                                    $45.67
-                                </div>
-                                <div className="details-container">
-                                    <i className="fa-solid fa-check"></i>
-                                    Medical cover
-                                </div>
-                            </div>
-                            <div className="sub-details-container">
-                                <div className="badge-container">
-                                    <p>
-                                        Covers trip losses
-                                    </p>
-                                </div>
-                                <div className="badge-container">
-                                    <p>
-                                        Delays and medical expenses
-                                    </p>
-                                </div>
-                                <div className="badge-container">
-                                    <p>
-                                        Higher medical coverage and trip losses
-                                    </p>
-                                </div>
-                                <div className="badge-container">
-                                    <a href='#'>
-                                        Download trip details
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="view-more-silver-button">
-                                <button className='btn' onClick={toggleSilverPlans} type='button'>
-                                    {silverBtnViewMore ? 'Show less' : 'Show more'}
-                                </button>
-                            </div>
-                            <div className="more-details-container">
-                                <div className={silverBtnViewMore ? 'gold-plan-more-details' : 'display-none'}>
-                                    {/* This is a toggled div. */}
-                                    <table>
-                                        <thead>
-                                            <th>
-                                                <tr>
-                                                    <td>
-                                                        Coverage description
-                                                    </td>
-                                                </tr>
-                                            </th>
-                                            <th>
-                                                <tr>
-                                                    <td>
-                                                        Amount
-                                                    </td>
-                                                </tr>
-                                            </th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    Overseas medical expenses
-                                                </td>
-                                                <td>
-                                                    $1,00,000
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Theft or dame to personal belongings
-                                                </td>
-                                                <td>
-                                                    $7,500
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Baggage Delays
-                                                </td>
-                                                <td>
-                                                    $900
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Travel Delay
-                                                </td>
-                                                <td>
-                                                    $1000
-                                                </td>
-                                            </tr>
-                                            {/* <tr>
-                                                <td>
-                                                    Liability for harm or damage you can accidentally cause
-                                                </td>
-                                                <td>
-                                                    $1,00,000
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Automatic travel cover extension
-                                                </td>
-                                                <td>
-                                                    21 days
-                                                </td>
-                                            </tr> */}
-                                            <tr>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            {/* <div>
-                            <p>You need to pay $50</p>
-                        </div>
-                        <nav>
-                            <button>
-                                Continue
-                            </button>
-                        </nav> */}
-                        </section>
-                    </div>
-                </div>
-                <div className="charges-form-wrapper-container card-2 recommended-card">
-                    <div className="charges-form-container">
-                        <section>
-                            <div className="plan-container">
-                                <div className="plan-heading-container card-2">
-                                    <h3 className="card-2-heading">Gold</h3>
-                                </div>
-                                <div className="plan-details-container">
-                                </div>
-                            </div>
-                            <div className="pricing-and-details-container pricing-1">
-                                <div className="price-container">
-                                    $61.73
-                                </div>
-                                <div className="details-container">
-                                    <i className="fa-solid fa-check"></i>
-                                    Higher medical cover
-                                </div>
-                            </div>
-                            <div className="sub-details-container">
-                                <div className="badge-container">
-                                    <p>
-                                        Covers trip losses
-                                    </p>
-                                </div>
-                                <div className="badge-container">
-                                    <p>
-                                        Delays and medical expenses
-                                    </p>
-                                </div>
-                                <div className="badge-container">
-                                    <p>
-                                        Higher medical coverage and trip losses
-                                    </p>
-                                </div>
-                                <div className="badge-container">
-                                    <a href='#'>
-                                        Download trip details
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="view-more-button">
-                                <button className='btn' onClick={toggleGoldPlans} type='button'>
-                                    {goldBtnViewMore ? 'Show less' : 'Show more'}
-                                </button>
-                            </div>
-                            <div className="more-details-container">
-                                <div className={goldBtnViewMore ? 'gold-plan-more-details' : 'display-none'}>
-                                    {/* This is a toggled div. */}
-                                    <table>
-                                        <thead>
-                                            <th>
-                                                <tr>
-                                                    <td>
-                                                        Coverage description
-                                                    </td>
-                                                </tr>
-                                            </th>
-                                            <th>
-                                                <tr>
-                                                    <td>
-                                                        Amount
-                                                    </td>
-                                                </tr>
-                                            </th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    Overseas medical expenses
-                                                </td>
-                                                <td>
-                                                    $1,00,000
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Theft or dame to personal belongings
-                                                </td>
-                                                <td>
-                                                    $7,500
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Baggage Delays
-                                                </td>
-                                                <td>
-                                                    $900
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Travel Delay
-                                                </td>
-                                                <td>
-                                                    $1000
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Liability for harm or damage you can accidentally cause
-                                                </td>
-                                                <td>
-                                                    $1,00,000
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Automatic travel cover extension
-                                                </td>
-                                                <td>
-                                                    21 days
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-                <div className="charges-form-wrapper-container card-3">
-                    <div className="charges-form-container">
-                        <section>
-                            <div className="plan-container">
-                                <div className="plan-heading-container">
-                                    <h3 className="card-3-heading">Platinum</h3>
-                                </div>
-                                <div className="plan-details-container">
-                                </div>
-                            </div>
-                            <div className="pricing-and-details-container pricing-1">
-                                <div className="price-container">
-                                    $71.04
-                                </div>
-                                <div className="details-container">
-                                    <i className="fa-solid fa-check"></i>
-                                    Comprehensive medical cover
-                                </div>
-                            </div>
-                            <div className="sub-details-container">
-                                <div className="badge-container">
-                                    <p>
-                                        Covers trip losses
-                                    </p>
-                                </div>
-                                <div className="badge-container">
-                                    <p>
-                                        Delays and medical expenses
-                                    </p>
-                                </div>
-                                <div className="badge-container">
-                                    <p>
-                                        Higher medical coverage and trip losses
-                                    </p>
-                                </div>
-                                <div className="badge-container">
-                                    <a href='#'>
-                                        Download trip details
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="view-more-platinum-button">
-                                <button className='btn' onClick={toggleplatinumPlans} type='button'>
-                                    {platinumBtnViewMore ? 'Show less' : 'Show more'}
-                                </button>
-                            </div>
-                            <div className="more-details-container">
-                                <div className={platinumBtnViewMore ? 'gold-plan-more-details' : 'display-none'}>
-                                    {/* This is a toggled div. */}
-                                    <table>
-                                        <thead>
-                                            <th>
-                                                <tr>
-                                                    <td>
-                                                        Coverage description
-                                                    </td>
-                                                </tr>
-                                            </th>
-                                            <th>
-                                                <tr>
-                                                    <td>
-                                                        Amount
-                                                    </td>
-                                                </tr>
-                                            </th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    Overseas medical expenses
-                                                </td>
-                                                <td>
-                                                    $1,00,000
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Theft or dame to personal belongings
-                                                </td>
-                                                <td>
-                                                    $7,500
-                                                </td>
-                                            </tr>
-                                            {/* <tr>
-                                                <td>
-                                                    Baggage Delays
-                                                </td>
-                                                <td>
-                                                    $900
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Travel Delay
-                                                </td>
-                                                <td>
-                                                    $1000
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Liability for harm or damage you can accidentally cause
-                                                </td>
-                                                <td>
-                                                    $1,00,000
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Automatic travel cover extension
-                                                </td>
-                                                <td>
-                                                    21 days
-                                                </td>
-                                            </tr> */}
-                                            <tr>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            {/* <div>
-                            <p>You need to pay $50</p>
-                        </div>
-                        <nav>
-                            <button>
-                                Continue
-                            </button>
-                        </nav> */}
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </ChargesSummaryWrapper>
+    const recommendedPlan: String = 'Gold';
 
+    const plansArray = [
+        {
+            planType: 'Gold',
+            planCost: '$61.73',
+            planPrimarySpeciality: 'Higher medical cover',
+            planDetails: ['Covers trip losses', 'Displays medical expenses', 'Higher medical coverage and trip losses'
+            ],
+            downloadTripButton: true,
+            planMoreDetailsBtn: true,
+            planMoreDetails: [
+                {
+                    headings: [
+                        { isHeading: true, headingText: 'Coverage description' },
+                        { isHeading: true, headingText: 'Amount' }
+                    ],
+                    rows: [
+                        { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
+                        { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
+                        { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
+                        { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
+                        { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
+                        { isRow: true, cells: ['Automatic travel cover extension', '21days'] }
+                    ]
+                }
+            ]
+        },
+        {
+            planType: 'Silver',
+            planCost: '$61.73',
+            planPrimarySpeciality: 'Higher medical cover',
+            planDetails: ['Covers trip losses', 'Displays medical expenses', 'Higher medical coverage and trip losses'
+            ],
+            downloadTripButton: true,
+            planMoreDetailsBtn: true,
+            planMoreDetails: [
+                {
+                    headings: [
+                        { isHeading: true, headingText: 'Coverage description' },
+                        { isHeading: true, headingText: 'Amount' }
+                    ],
+                    rows: [
+                        { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
+                        { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
+                        { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
+                        { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
+                        { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
+                        { isRow: true, cells: ['Automatic travel cover extension', '21days'] }
+                    ]
+                }
+            ]
+        },
+        {
+            planType: 'Platinum',
+            planCost: '$61.73',
+            planPrimarySpeciality: 'Higher medical cover',
+            planDetails: ['Covers trip losses', 'Displays medical expenses', 'Higher medical coverage and trip losses'
+            ],
+            downloadTripButton: true,
+            planMoreDetailsBtn: true,
+            planMoreDetails: [
+                {
+                    headings: [
+                        { isHeading: true, headingText: 'Coverage description' },
+                        { isHeading: true, headingText: 'Amount' }
+                    ],
+                    rows: [
+                        { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
+                        { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
+                        { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
+                        { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
+                        { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
+                        { isRow: true, cells: ['Automatic travel cover extension', '21days'] }
+                    ]
+                }
+            ]
+        },
+    ]
+
+    const toggleButton = (planType) => {
+        console.log(planType)
+        switch (planType) {
+            case 'Gold':
+                return toggleGoldPlans;
+            case 'Silver':
+                return toggleSilverPlans;
+            case 'Platinum':
+                return togglePlatinumPlans;
+            default:
+                return () => { };
+        }
+    };
+
+    const isVisible = (planType) => {
+        switch (planType) {
+            case 'Gold':
+                return goldPlanTable;
+            case 'Silver':
+                return silverPlanTable;
+            case 'Platinum':
+                return platinumPlanTable;
+            default:
+                return false;
+        }
+    };
+
+    return (
+
+        <ChargesSummaryWrapper>
+            <div className="plans-container-wrapper">
+                {plansArray.map((item, index) => {
+                    return (
+                        <div className={`plan-${index + 1} charges-summary-wrapper-container ${item.planType === recommendedPlan ? 'recommended-card' : ''}`} key={`wrapper-${index+1}`}>
+                            <div className="chrges-summary-container">
+                                <div className="plan-more-details">
+                                    <table>
+                                        <tbody key={`tbody-${index+1}`}>
+                                            <tr className={`plan-${index+1}`}>
+                                                <td>{item.planType}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{item.planCost}</td>
+                                            </tr>
+                                            {item.planMoreDetailsBtn && item.planDetails.map((detail, detailIndex) => (
+                                                <tr key={`detail-${detailIndex}`}>
+                                                    <td>{detail}</td>
+                                                </tr>
+                                            ))}
+                                            {item.downloadTripButton &&
+                                                <tr>
+                                                    <td><button type='button'> Download details</button></td>
+                                                </tr>
+                                            }
+                                            {item.planMoreDetailsBtn &&
+                                                <tr>
+                                                    <td>
+                                                        <button type="button" onClick={toggleButton(item.planType)}>
+                                                            {isVisible(item.planType) ? 'Show less' : 'Show more'}
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            }
+                                            {isVisible(item.planType) && (
+                                                <tr>
+                                                    <td>
+                                                        <table>
+                                                            {item.planMoreDetails.map((i, innerIndex) => (
+                                                                <React.Fragment key={`inner-${innerIndex}`}>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            {i.headings.map((headingsObj, headingIndex) => (
+                                                                                headingsObj.isHeading ? (
+                                                                                    <th key={`heading-${headingIndex}`}>
+                                                                                        {headingsObj.headingText}
+                                                                                    </th>
+                                                                                ) : null
+                                                                            ))}
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {i.rows.map((rowObj, rowIndex) => (
+                                                                            rowObj.isRow ? (
+                                                                                <tr key={`row-${rowIndex}`}>
+                                                                                    {rowObj.cells.map((cell, cellIndex) => (
+                                                                                        <td key={`cell-${cellIndex}`}>{cell}</td>
+                                                                                    ))}
+                                                                                </tr>
+                                                                            ) : null
+                                                                        ))}
+                                                                    </tbody>
+                                                                </React.Fragment>
+                                                            ))}
+                                                        </table>
+                                                    </td>
+                                                </tr>)}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
+        </ChargesSummaryWrapper >
     );
 };
 
