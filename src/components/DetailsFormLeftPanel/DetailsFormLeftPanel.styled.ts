@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 
 export const DetailsFormLeftPanelWrapper = styled.div`
-.logo-heading-container{
+
+  .height-width-100{
+    height:100%;
+    width: 100%;
+  }
+
+.display-flex-align-items-center{
 display:flex;
 align-items:center;
 }
@@ -10,12 +16,12 @@ align-items:center;
 margin-left:16px
 }
 
+.logo-heading-container{
+display:flex;
+align-items:center;
+}
 .details-form-container-wrapper{
-    width:70%;
-    position: relative;
-    top: 200px;
-    left: 100px;
-    border-radius: 10px;
+    border-radius: 0px 374px 374px 0px;
     color:white;
     background: rgba(0, 0, 0, 0.31);
     // height:150px;
@@ -23,23 +29,33 @@ margin-left:16px
     }
 
     .logo-container{
-        height:30px;
-        width:30px;
-        text-align:center;
-        align-content:center;
-        background:#2BB4C0;
-        border-radius:50%;
-        color:white;
+        display:flex;
+        // height:30px;
+        // width:30px;
+        // text-align:center;
+        // align-content:center;
+        // background:#2BB4C0;
+        // border-radius:50%;
+        // color:white;
     }
 
     .nav-items-container{
-    height: 100%;
+    height: 35%;
     display: flex;
+    flex-direction:column;
+    justify-content:space-around;
+    padding:4%
     }
 
     .active-tab{
-        background:green;
-        color:yellow;
+        // background:green;
+        color:#9dc6ff;
+        font-size:150%;
+        }
+        .inactive-tab{
+            // background:green;
+            color:#d9d2ff;
+            font-size:100%;
     }
 
     li{

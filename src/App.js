@@ -16,7 +16,7 @@ const App = () => {
       <div className="App">
         <header className="App-header">
           <DetailsFormLeftPanel activeTab={pageCount} />
-          <div className="vertical-line" />
+          {/* <div className="vertical-line" /> */}
         </header>
         <main className="main-div-container">
           <Routes>

@@ -13,8 +13,7 @@ border-bottom:solid 1px black;
 .details-form-right-panel-wrapper-container{
 display:flex;
 }
-
-.fVDNpt{
+selectVDNpt{
     height:100%
 }
 
@@ -27,6 +26,14 @@ display:flex;
     flex-direction: column;
     justify-content: space-around;
     align-self: center;
+}
+
+select{
+    height: 38px;
+    border-radius: 6px;
+    }
+.width-100{
+width:100%;
 }
 
 .panel-2{

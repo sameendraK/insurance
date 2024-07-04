@@ -1,8 +1,17 @@
 import React, { FC, useContext, useState } from 'react';
 import { ChargesSummaryWrapper } from './ChargesSummary.styled.ts'
+import { FormContext } from '../../context/fieldsContext.js';
 interface ChargesFormProps { }
 
 const ChargesSummary: FC<ChargesFormProps> = () => {
+
+    const { selectedPlanHandler } = useContext(FormContext)
+
+    function clickHandler(item, index) {
+        selectedPlanHandler(item, index);
+        selectedCard(item, index);
+    }
+
     const [goldPlanTable, setGoldPlanTable] = useState(false);
     const toggleGoldPlans = () => {
         setGoldPlanTable(!goldPlanTable);
@@ -15,7 +24,7 @@ const ChargesSummary: FC<ChargesFormProps> = () => {
     const togglePlatinumPlans = () => {
         setPlatinumPlanTable(!platinumPlanTable);
     };
-    const recommendedPlan: String = 'Gold';
+    const recommendedPlan: String = 'Silver';
 
     const plansArray = [
         {
@@ -38,10 +47,12 @@ const ChargesSummary: FC<ChargesFormProps> = () => {
                         { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
                         { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
                         { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
-                        { isRow: true, cells: ['Automatic travel cover extension', '21days'] }
-                    ]
-                }
-            ]
+                        { isRow: true, cells: ['Automatic travel cover extension', '21days'] },
+                        { isRow: true, isForStyling: true, cells: ['invisibleText'] }
+                    ],
+                },
+            ],
+            isForStyling: true
         },
         {
             planType: 'Silver',
@@ -63,7 +74,8 @@ const ChargesSummary: FC<ChargesFormProps> = () => {
                         { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
                         { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
                         { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
-                        { isRow: true, cells: ['Automatic travel cover extension', '21days'] }
+                        { isRow: true, cells: ['Automatic travel cover extension', '21days'], },
+                        { isRow: true, isForStyling: true, cells: ['invisibleText'] }
                     ]
                 }
             ]
@@ -88,7 +100,9 @@ const ChargesSummary: FC<ChargesFormProps> = () => {
                         { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
                         { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
                         { isRow: true, cells: ['Liability for harm or damage you can accidentally cause', '$1,00,000'] },
-                        { isRow: true, cells: ['Automatic travel cover extension', '21days'] }
+                        { isRow: true, cells: ['Automatic travel cover extension', '21days'] },
+                        { isRow: true, isForStyling: true, cells: ['invisibleText'] }
+
                     ]
                 }
             ]
@@ -109,6 +123,12 @@ const ChargesSummary: FC<ChargesFormProps> = () => {
         }
     };
 
+    // function cardClickHandler(item, index) {
+    //     console.log(item, index);
+    //     // document.querySelector(`plan-${index + 1}`)?.classList.add('selected-card');
+    // }
+
+
     const isVisible = (planType) => {
         switch (planType) {
             case 'Gold':
@@ -122,34 +142,44 @@ const ChargesSummary: FC<ChargesFormProps> = () => {
         }
     };
 
+    function selectedCard(item, index) {
+        document.querySelector(`plan-${index + 1}`)?.classList.add("selected-card");
+    }
+
     return (
 
         <ChargesSummaryWrapper>
             <div className="plans-container-wrapper">
                 {plansArray.map((item, index) => {
                     return (
-                        <div className={`plan-${index + 1} charges-summary-wrapper-container ${item.planType === recommendedPlan ? 'recommended-card' : ''}`} key={`wrapper-${index+1}`}>
+                        <div className={`plan-${index + 1} ${item.planType === recommendedPlan ? 'recommended-card' : 'charges-summary-wrapper-container'} ${item.planType === recommendedPlan ? 'recommended-card' : 'charges-summary-wrapper-container'}`} key={`wrapper-${index + 1}`} onClick={() => clickHandler(item, index)}>
                             <div className="chrges-summary-container">
                                 <div className="plan-more-details">
-                                    <table>
-                                        <tbody key={`tbody-${index+1}`}>
-                                            <tr className={`plan-${index+1}`}>
-                                                <td>{item.planType}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>{item.planCost}</td>
-                                            </tr>
-                                            {item.planMoreDetailsBtn && item.planDetails.map((detail, detailIndex) => (
-                                                <tr key={`detail-${detailIndex}`}>
-                                                    <td>{detail}</td>
-                                                </tr>
-                                            ))}
-                                            {item.downloadTripButton &&
+                                    <table >
+                                        <tbody key={`tbody-${index + 1}`}>
+                                            <div className="first-styling">
                                                 <tr>
-                                                    <td><button type='button'> Download details</button></td>
+                                                    <td className={`plan-${index + 1} plan-heading ${item.planType === recommendedPlan ? 'recommended-card-heading' : 'normal-card-heading'}`}
+                                                    >{item.planType}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>{item.planCost}</td>
+                                                </tr>
+                                                {item.planMoreDetailsBtn && item.planDetails.map((detail, detailIndex) => (
+                                                    <tr key={`detail-${detailIndex}`}>
+                                                        <td>{detail}</td>
+                                                    </tr>
+                                                ))}
+                                            </div>
+                                            {item.downloadTripButton &&
+                                                <tr >
+                                                    <td className='text-align-center'><button type='button' className={`${item.planType}-download-button download-details-button`}> Download details</button></td>
                                                 </tr>
                                             }
-                                            {item.planMoreDetailsBtn &&
+
+                                            {/* Comented the below code as we are introducting three buttons and without the buttons, the UX would be much better as we don't need to click the button to see the details */}
+
+                                            {/* {item.planMoreDetailsBtn &&
                                                 <tr>
                                                     <td>
                                                         <button type="button" onClick={toggleButton(item.planType)}>
@@ -157,40 +187,45 @@ const ChargesSummary: FC<ChargesFormProps> = () => {
                                                         </button>
                                                     </td>
                                                 </tr>
-                                            }
-                                            {isVisible(item.planType) && (
-                                                <tr>
-                                                    <td>
-                                                        <table>
-                                                            {item.planMoreDetails.map((i, innerIndex) => (
-                                                                <React.Fragment key={`inner-${innerIndex}`}>
-                                                                    <thead>
-                                                                        <tr>
-                                                                            {i.headings.map((headingsObj, headingIndex) => (
-                                                                                headingsObj.isHeading ? (
-                                                                                    <th key={`heading-${headingIndex}`}>
-                                                                                        {headingsObj.headingText}
-                                                                                    </th>
-                                                                                ) : null
-                                                                            ))}
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        {i.rows.map((rowObj, rowIndex) => (
-                                                                            rowObj.isRow ? (
-                                                                                <tr key={`row-${rowIndex}`}>
-                                                                                    {rowObj.cells.map((cell, cellIndex) => (
-                                                                                        <td key={`cell-${cellIndex}`}>{cell}</td>
-                                                                                    ))}
-                                                                                </tr>
+                                            } */}
+
+                                            <tr>
+                                                <td>
+                                                    <table>
+                                                        {item.planMoreDetails.map((i, innerIndex) => (
+                                                            <React.Fragment key={`inner-${innerIndex}`}>
+                                                                <thead>
+                                                                    <tr>
+                                                                        {i.headings.map((headingsObj, headingIndex) => (
+                                                                            headingsObj.isHeading ? (
+                                                                                <th key={`heading-${headingIndex}`}>
+                                                                                    {headingsObj.headingText}
+                                                                                </th>
                                                                             ) : null
                                                                         ))}
-                                                                    </tbody>
-                                                                </React.Fragment>
-                                                            ))}
-                                                        </table>
-                                                    </td>
-                                                </tr>)}
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {i.rows.map((rowObj, rowIndex) => (
+                                                                        rowObj.isRow ? (
+                                                                            <tr key={`row-${rowIndex}`} >
+                                                                                {rowObj.cells.map((cell, cellIndex) => (
+                                                                                    <td key={`cell-${cellIndex}`}>{cell}</td>
+                                                                                ))}
+                                                                            </tr>
+                                                                        ) : null
+                                                                    ))}
+                                                                </tbody>
+                                                            </React.Fragment>
+                                                        ))}
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            {/* <tr>
+                                                <td className={`${item.isForStyling ? 'styling-row' : ''}`}>
+                                                    {item.planType}
+                                                </td>
+                                            </tr> */}
                                         </tbody>
                                     </table>
                                 </div>

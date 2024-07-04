@@ -5,6 +5,7 @@ interface DetailsFormRightPanelProps {
    data: {
       name: string;
       inputType: string;
+      dropdownData?: string[] | number[]
    }[]
 }
 
@@ -19,7 +20,14 @@ const DetailsFormRightPanel: FC<DetailsFormRightPanelProps> = ({ data }) => {
                {firstHalf.map((item, index) => (
                   <div key={index} className="details-form-right-panel-container first-panel">
                      <label htmlFor={item.name} className="label-class">{item.name}</label>
-                     <input type='text' className="form-control" id={item.name} placeholder={item.name} />
+                     {item.inputType === 'dropdown' && item.dropdownData &&
+                        <select className='width-100'>
+                           {item.dropdownData.map((i) => (
+                              <option >{i}</option>
+                           ))}
+                        </select>
+                     }
+                     {item.inputType === 'text' && <input type='text' className="form-control" id={item.name} placeholder={item.name} />}
                   </div>
                ))}
             </div>
@@ -27,9 +35,15 @@ const DetailsFormRightPanel: FC<DetailsFormRightPanelProps> = ({ data }) => {
                {secondHalf.map((item, index) => (
                   <div key={index} className="details-form-right-panel-container second-panel">
                      <label htmlFor={item.name} className="label-class">{item.name}</label>
-                     {item.inputType === 'dropdown' && <input type='text' className="form-control" id={item.name} placeholder={item.name} />
+                     {item.inputType === 'dropdown' && item.dropdownData &&
+                        <select className='width-100'>
+                           {item.dropdownData.map((i) => (
+                              <option >{i}</option>
+                           ))}
+                        </select>
                      }
-                     <input type='text' className="form-control" id={item.name} placeholder={item.name} />
+                     {item.inputType === 'text' && <input type='text' className="form-control" id={item.name} placeholder={item.name} />}
+                     {item.inputType === 'date' && <input type='date' className="form-control" id={item.name} placeholder={item.name} />}
                   </div>
                ))}
             </div>

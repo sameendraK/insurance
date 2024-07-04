@@ -14,16 +14,19 @@ body {
 
 .payment-form-container {
   display: flex;
-  flex-direction: column;
+  justify-content:space-evenly;
   align-items: center;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  margin: auto;
+  // background-color: #fff;
+  // padding: 20px;
+  // border-radius: 8px;
+  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  // max-width: 400px;
+  // margin: auto;
 }
 
+.cvv-and-expiry-date-container{
+display:flex;
+}
 .card-container {
   margin-bottom: 20px;
   display: flex;
@@ -55,6 +58,12 @@ body {
   border: 1px solid #dcdcdc;
 }
 
+.submit-button-container {
+    margin-inline: auto;
+    text-align: center;
+    width: 90%;
+}
+
 .submit-button {
   padding: 15px;
   font-size: 16px;
@@ -64,6 +73,8 @@ body {
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width:100%;
+    color:white;
 }
 
 .submit-button:hover {
