@@ -3,9 +3,10 @@ import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles-compiled.css';
 import './Payment.css'; // Import the CSS file
 import { FormContext } from '../../context/fieldsContext';
+import { useNavigate } from 'react-router-dom';
 
 const PaymentForm = () => {
-    const { selectedPlan } = useContext(FormContext);
+    const { selectedPlan, currentActiveTab } = useContext(FormContext);
     const [flipped, setFlipped] = useState(false);
 
     const [state, setState] = useState({
@@ -40,6 +41,16 @@ const PaymentForm = () => {
         console.log("Last")
     }
 
+
+
+    const navigate = useNavigate();
+    function submitButtonHandler() {
+        redirectToHomePage();
+        currentActiveTab(0)
+    }
+    const redirectToHomePage = () => {
+        navigate('/');
+    }
     return (
         <div className="payment-form-container">
             <div className="card-container">
@@ -98,7 +109,7 @@ const PaymentForm = () => {
                         </div>
                     </div>
                     <div className="submit-button-container">
-                        <button type="submit" className="submit-button">Submit</button>
+                        <button type="submit" className="submit-button" onClick={submitButtonHandler}>Submit</button>
                     </div>
                 </form>
             </div>

@@ -23,6 +23,7 @@ export const FormProvider = ({ children }) => {
     const [currentFields, setCurrentFields] = useState(allFields.slice(0, 3));
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isLastField, setIsLastField] = useState('');
+    const [activeTab, setActiveTab] = useState('');
     const recordsPerPage = 3;
 
     const handleNextClick = () => {
@@ -41,8 +42,13 @@ export const FormProvider = ({ children }) => {
         setSelectedPlan(item);
     }
 
+    const currentActiveTab = (item, index) => {
+        alert("Submitted the form, redirecting to home page now... ")
+        setActiveTab(item)
+    }
+
     return (
-        <FormContext.Provider value={{ allFields, buttonData, handleNextClick, isLastField, selectedPlanHandler,selectedPlan }}>
+        <FormContext.Provider value={{ allFields, buttonData, handleNextClick, isLastField, selectedPlanHandler, selectedPlan, activeTab, currentActiveTab }}>
             {children}
         </FormContext.Provider>
     );

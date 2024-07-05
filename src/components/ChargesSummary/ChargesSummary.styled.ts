@@ -35,17 +35,17 @@ export const ChargesSummaryWrapper = styled.div`
             display:flex;
             }
             
-            .card-1:hover{
-                box-shadow: -3px 3px 18px 2px silver;
-                border: solid 1px silver;
-                border-radius:5px;
-                }
+            // .card-1:hover{
+            //     box-shadow: -3px 3px 18px 2px silver;
+            //     border: solid 1px silver;
+            //     border-radius:5px;
+            //     }
                 
-                    .card-3:hover{
-                        box-shadow: -3px 3px 18px 2px silver;
-                        border: solid 2px #b8b5b8;
-                        border-radius:5px;
-                }
+            //         .card-3:hover{
+            //             box-shadow: -3px 3px 18px 2px silver;
+            //             border: solid 2px #b8b5b8;
+            //             border-radius:5px;
+            //     }
 .card-1-heading{
     background-image: linear-gradient(90deg,silver, transparent);
 }
@@ -82,7 +82,7 @@ text-align:center;
   border-radius: 3%;
   padding: 5px 20px 15px 22px;
   overflow: hidden;
-  transform: scale(1);
+//   transform: scale(1);
   transition: transform 0.4s;
   cursor:pointer;
 }
@@ -106,7 +106,7 @@ text-align:center;
 
 .recommended-card:hover {
 //   transform: scale(1.1);
-border:solid 1px red;
+// border:solid 1px red;
 }
 
 @keyframes rotateGradient {

@@ -8,7 +8,7 @@ import PaymentForm from './components/PaymentPage/PaymentPage.tsx';
 import './App.css';
 
 const App = () => {
-  const { allFields } = React.useContext(FormContext);
+  const { allFields, activeTab } = React.useContext(FormContext);
   const [pageCount, setPageCount] = useState(0);
 
   return (
@@ -26,7 +26,7 @@ const App = () => {
           </Routes>
           <div className="button-container">
             {pageCount > 0 && <PreviousButton pageCount={pageCount} setPageCount={setPageCount} />}
-            <NextButton pageCount={pageCount} setPageCount={setPageCount} />
+            {pageCount < 2 && <NextButton pageCount={pageCount} setPageCount={setPageCount} />}
           </div>
         </main>
       </div>

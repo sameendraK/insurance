@@ -9,7 +9,7 @@ const ChargesSummary: FC<ChargesFormProps> = () => {
 
     function clickHandler(item, index) {
         selectedPlanHandler(item, index);
-        selectedCard(item, index);
+        // selectedCard(item, index);
     }
 
     const [goldPlanTable, setGoldPlanTable] = useState(false);
